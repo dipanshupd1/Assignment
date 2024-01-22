@@ -6,18 +6,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-const Newentry = () => {
+const Update = () => {
     const navigate=useNavigate()
     const nameref = useRef(null)
     const emailref = useRef(null)
     const phoneref = useRef(null)
     const hobbiesref = useRef(null)
 
+    const userObj=JSON.parse(localStorage.getItem('user'))
+        
     const [details, setDetails] = useState({
-        nameField: "",
-        emailField: "",
-        phoneField: "",
-        hobbiesField: "",
+        nameField: userObj.Name,
+        emailField: userObj.email,
+        phoneField: userObj.phone,
+        hobbiesField: userObj.hobby,
     });
     const toastifyErrorOptions={
         position: "top-center",
@@ -53,10 +55,11 @@ const Newentry = () => {
             toast.error('Invalid Phone Number',toastifyErrorOptions )
         }
         else{
-            const resp= await axios.post("http://localhost:8000/newdata",{
-                Name,email,phone,hobby
+           const id=userObj.id
+            const resp= await axios.post("http://localhost:8000/update",{
+                Name,email,phone,hobby,id
             })
-            console.log(resp.data);
+            // console.log(resp.data);
             if(resp.data.msg=='success')
             navigate('/')
         else{
@@ -72,13 +75,13 @@ const Newentry = () => {
             <form className='form-body' onSubmit={submitHandler}>
                 <div className='form-head'>Make A New Entry</div>
                 <p>Enter Your Username</p>
-                <input type="text" name="nameField" onChange={dataChange} ref={nameref}/>
+                <input type="text" name="nameField" onChange={dataChange} ref={nameref} value={details.nameField}/>
                 <p>Enter Your email</p>
-                <input type="email" name="emailField" onChange={dataChange} ref={emailref}/>
+                <input type="email" name="emailField" onChange={dataChange} ref={emailref} value={details.emailField}/>
                 <p>Enter Your Phone</p>
-                <input type="tel" name="phoneField" onChange={dataChange} ref={phoneref} />
+                <input type="tel" name="phoneField" onChange={dataChange} ref={phoneref}  value={details.phoneField}/>
                 <p>Enter Your hobbies</p>
-                <input type="text" name="hobbiesField" onChange={dataChange} ref={hobbiesref} /> <br />
+                <input type="text" name="hobbiesField" onChange={dataChange} ref={hobbiesref}  value={details.hobbiesField}/> <br />
                 <button>Save</button> <br />
                <p className='go-back'> <Link to='/' className='link'>Back To Home</Link></p>
             </form>
@@ -97,4 +100,4 @@ const Newentry = () => {
     )
 }
 
-export default Newentry
+export default Update

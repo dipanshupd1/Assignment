@@ -3,6 +3,7 @@ import './App.css'
 import Newentry from './assets/components/Newentry'
 import Table from './assets/components/Table'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Update from './assets/components/Update'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Table/>}/>
         <Route path='/newdata' element={<Newentry/>}/>
+        <Route path='/update' element={<Update/>}/>
 
       </Routes>
     </BrowserRouter>
