@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import '../css/form.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 const Newentry = () => {
     const nameref = useRef(null)
     const emailref = useRef(null)
@@ -68,7 +69,8 @@ const Newentry = () => {
                 <input type="tel" name="phoneField" onChange={dataChange} ref={phoneref} />
                 <p>Enter Your hobbies</p>
                 <input type="text" name="hobbiesField" onChange={dataChange} ref={hobbiesref} /> <br />
-                <button>Save</button>
+                <button>Save</button> <br />
+               <p className='go-back'> <Link to='/' className='link'>Back To Home</Link></p>
             </form>
             <ToastContainer
                 position="top-center"

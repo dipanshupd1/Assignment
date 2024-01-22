@@ -1,11 +1,12 @@
 .form-main{
     width: 100vw;
     height: 100vh;
-    background-color: rgb(191, 191, 191);
+    /* background-color: rgb(191, 191, 191); */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: url('../images/img1.png') center/cover;
 }
 .form-head{
     padding: 1rem;
@@ -24,10 +25,13 @@
     color: white;
     border-radius: 1rem;
     width: 50vw;
-    height: 80vh;
+    /* height: 80vh; */
     /* border: 1.5px solid #9EC8B9; */
     margin: auto;
     background: linear-gradient(45deg,#0d3c53,black);
+    background:none;
+    background-color: rgba(0, 0, 0, 0.313);
+    -webkit-backdrop-filter: blur(7px);
     box-shadow: 1px 1px 10px 0 rgb(0, 0, 0);
 }
 .form-body input{
@@ -37,7 +41,7 @@
     outline: none;
     padding: 8px 0 1px 4px;
     margin-bottom: 1rem;
-    border-bottom: 2px solid green;
+    border-bottom: 2px solid rgb(185, 249, 185);
     color: white;
 }
 .form-body p{
@@ -52,4 +56,19 @@
     color: white;
     font-size: 1rem;
     border-radius: 0.5rem;
+    cursor: pointer;
+}
+.go-back{
+    margin-top: 1rem;
+    /* padding: 0.7rem; */
+    /* border: 2px solid red; */
+    
+}
+.link{
+    padding: 0.25rem 0.5rem;
+    text-decoration: none;
+    color: rgb(4, 59, 239);
+    color: black;
+    background-color: rgb(0, 174, 255);
+    border-radius: 0.45rem;
 }
