@@ -56,7 +56,7 @@ const Update = () => {
         }
         else{
            const id=userObj.id
-            const resp= await axios.post("http://localhost:8000/update",{
+            const resp= await axios.post(`${import.meta.env.VITE_SERVER}/update`,{
                 Name,email,phone,hobby,id
             })
             // console.log(resp.data);

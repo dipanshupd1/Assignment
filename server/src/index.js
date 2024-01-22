@@ -2,12 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const mongoose=require("mongoose")
 const User=require('../modal/usermodal.js')
+require('dotenv').config()
 
 const app=express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb://localhost:27017/it-studio').then(()=>{
+mongoose.connect(process.env.MONGO_DB).then(()=>{
     console.log('connected successfully')})
 
 
@@ -95,8 +96,7 @@ try {
 }
 
 })
-
-
-app.listen(8000,()=>{
-    console.log('listening at port 3000');
+const PORT=process.env.PORT||8000
+app.listen(PORT,()=>{
+    console.log('listening at port ',PORT);
 })

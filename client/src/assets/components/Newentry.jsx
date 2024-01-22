@@ -53,7 +53,7 @@ const Newentry = () => {
             toast.error('Invalid Phone Number',toastifyErrorOptions )
         }
         else{
-            const resp= await axios.post("http://localhost:8000/newdata",{
+            const resp= await axios.post(`${import.meta.env.VITE_SERVER}/newdata`,{
                 Name,email,phone,hobby
             })
             console.log(resp.data);

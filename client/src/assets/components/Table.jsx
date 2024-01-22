@@ -9,7 +9,7 @@ const Table = () => {
     const [newdata, setnewdata] = useState([]);
     const getdata=async()=>{
         try {
-            const userdata=await axios.post('http://localhost:8000/getdata')
+            const userdata=await axios.post(`${import.meta.env.VITE_SERVER}/getdata`)
             if(userdata.data.msg='success'){
                 setnewdata(userdata.data.alluser)
             }
@@ -53,7 +53,7 @@ const Table = () => {
     const deleteuser=async(val)=>{
      const id=val._id
     try {
-        const resp= await axios.post("http://localhost:8000/deleteuser",{
+        const resp= await axios.post(`${import.meta.env.VITE_SERVER}/deleteuser`,{
                 id
             })
             console.log(resp.data.msg);
